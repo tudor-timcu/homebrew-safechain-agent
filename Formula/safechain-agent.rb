@@ -10,19 +10,16 @@ class SafechainAgent < Formula
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/AikidoSec/safechain-agent/releases/download/vpr-1/safechain-agent-darwin-amd64"
-      sha256 "2a9fb7aa1f0cbac4c66cce114018c500f893099d4fa5c618a8a92f3be9a232cd"
+      url "https://github.com/AikidoSec/sc-agent/releases/download/v1.1.0/safechain-agent-darwin-amd64"
+      sha256 "fa863828ef78bf4cd8a97ee32cc9d7c75d9e458a82f64ad3ce2884a379955566"
     end
     if Hardware::CPU.arm?
-      url "https://github.com/AikidoSec/safechain-agent/releases/download/vpr-1/safechain-agent-darwin-arm64"
-      sha256 "0199d01b89670f99d112cfad2f0c03fcec0a28baeadc702353de4823f1420826"
+      url "https://github.com/AikidoSec/sc-agent/releases/download/v1.1.0/safechain-agent-darwin-arm64"
+      sha256 "7a2e5e9179ab3a5f3635517fb6981ce049d96108595652cef9c8287f3e35d427"
     end
   end
 
   def install
-    # The downloaded file is the binary itself
-    # Homebrew downloads it to the build directory
-    # Find the downloaded file (it might have the exact name or be sanitized)
     binary_name = Hardware::CPU.intel? ? "safechain-agent-darwin-amd64" : "safechain-agent-darwin-arm64"
     
     # Try to find the file - Homebrew might have renamed it
