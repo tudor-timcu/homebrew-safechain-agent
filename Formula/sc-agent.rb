@@ -5,7 +5,7 @@
 class ScAgent < Formula
   desc "Safechain agent daemon"
   homepage "https://github.com/tudor-timcu/sc-agent"
-  version "pr-1"
+  version "1.6.0"
   license "MIT"
 
   on_macos do
