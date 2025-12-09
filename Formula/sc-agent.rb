@@ -5,25 +5,25 @@
 class ScAgent < Formula
   desc "Aikido Security SC-Agent"
   homepage "https://github.com/AikidoSec/sc-agent"
-  version "1.9.0"
+  version "2.0.0"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.intel?
       url "https://github.com/AikidoSec/sc-agent/releases/download/v#{version}/sc-agent-darwin-amd64"
-      sha256 "2a8364e208823fb25ccddb0d8fe747c82ea501dbbfad0bc1a6c2a9deedcbb41c"
+      sha256 "62bd46143747edea52b503519915411881dd44fe713a887610df0f01e899ae39"
 
       resource "safe-chain" do
-        url "https://github.com/AikidoSec/sc-agent/releases/download/v#{ScAgent.version}/safe-chain-darwin-amd64"
+        url "https://github.com/AikidoSec/sc-agent/releases/download/v#{version}/safe-chain-darwin-amd64"
         sha256 "442414b887740e7c19cec066f2472e6730ea3a5702e76d8b602a9140e8e0a7f6"
       end
     end
     if Hardware::CPU.arm?
       url "https://github.com/AikidoSec/sc-agent/releases/download/v#{version}/sc-agent-darwin-arm64"
-      sha256 "89325871c893da6d402036360d2cc7d243b2220985296d4c44c7940f02206c60"
+      sha256 "912288738971150f71602a35df171b588ed43520134d77c02ffe75f7a7756700"
 
       resource "safe-chain" do
-        url "https://github.com/AikidoSec/sc-agent/releases/download/v#{ScAgent.version}/safe-chain-darwin-arm64"
+        url "https://github.com/AikidoSec/sc-agent/releases/download/v#{version}/safe-chain-darwin-arm64"
         sha256 "d44c266e2c0f24b30c668c1eb693f0b5097e310dfe46050a0cbeb9b295517354"
       end
     end
@@ -42,7 +42,6 @@ class ScAgent < Formula
     bin.install downloaded_file => "sc-agent"
     chmod 0755, bin/"sc-agent"
 
-    # Install safe-chain binary
     resource("safe-chain").stage do
       safe_chain_name = Hardware::CPU.intel? ? "safe-chain-darwin-amd64" : "safe-chain-darwin-arm64"
       downloaded = if File.exist?(safe_chain_name)
