@@ -36,7 +36,9 @@ class ScAgent < Formula
   end
 
   service do
+    name macos: "com.aikidosecurity.sc-agent"
     run [opt_bin/"sc-agent"]
+    run_at_load true
     keep_alive true
     log_path var/"log/sc-agent.log"
     error_log_path var/"log/sc-agent.error.log"
