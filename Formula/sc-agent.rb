@@ -10,12 +10,12 @@ class ScAgent < Formula
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/AikidoSec/sc-agent/releases/download/v1.5.0/sc-agent-darwin-amd64"
-      sha256 "8fa20bd7db09bbb404a1c8bbf4df8253b88e705690f56d0469b9e3b792bcb805"
+      url "https://github.com/AikidoSec/sc-agent/releases/download/v1.6.0/sc-agent-darwin-amd64"
+      sha256 "287ddc7fae5bc011fca80b2fcd7f34a685ff55473d74eee1a8b7257087f6c4fc"
     end
     if Hardware::CPU.arm?
-      url "https://github.com/AikidoSec/sc-agent/releases/download/v1.5.0/sc-agent-darwin-arm64"
-      sha256 "55238898f207e54c0820def1c7c289c84fb1cd7b8eae7e7c44280378a4ebaf65"
+      url "https://github.com/AikidoSec/sc-agent/releases/download/v1.6.0/sc-agent-darwin-arm64"
+      sha256 "4577f86355a1ba07c4c935e863f47b30b6d0890f1bf8b560b7975b5317727db2"
     end
   end
 
