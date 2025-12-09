@@ -10,17 +10,17 @@ class ScAgent < Formula
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/AikidoSec/sc-agent/releases/download/v1.1.0/safechain-agent-darwin-amd64"
-      sha256 "fa863828ef78bf4cd8a97ee32cc9d7c75d9e458a82f64ad3ce2884a379955566"
+      url "https://github.com/AikidoSec/sc-agent/releases/download/v1.4.0/sc-agent-darwin-amd64"
+      sha256 "7b2d017e890ab6017e542750512507182b6bcb630ecbdf1eecd3a6defcfbc3cd"
     end
     if Hardware::CPU.arm?
-      url "https://github.com/AikidoSec/sc-agent/releases/download/v1.1.0/safechain-agent-darwin-arm64"
-      sha256 "7a2e5e9179ab3a5f3635517fb6981ce049d96108595652cef9c8287f3e35d427"
+      url "https://github.com/AikidoSec/sc-agent/releases/download/v1.4.0/sc-agent-darwin-arm64"
+      sha256 "d26e640694917b890dcf6b74f45a09fa4d6828860e01c8c01b7c9cad3bfcc59f"
     end
   end
 
   def install
-    binary_name = Hardware::CPU.intel? ? "safechain-agent-darwin-amd64" : "safechain-agent-darwin-arm64"
+    binary_name = Hardware::CPU.intel? ? "sc-agent-darwin-amd64" : "sc-agent-darwin-arm64"
     
     # Try to find the file - Homebrew might have renamed it
     downloaded_file = if File.exist?(binary_name)
@@ -31,13 +31,13 @@ class ScAgent < Formula
       raise "Could not find downloaded binary file"
     end
     
-    bin.install downloaded_file => "safechain-agent"
-    chmod 0755, bin/"safechain-agent"
+    bin.install downloaded_file => "sc-agent"
+    chmod 0755, bin/"sc-agent"
   end
 
   def post_install
     # Create plist file for launchd
-    plist_path = "#{ENV['HOME']}/Library/LaunchAgents/homebrew.mxcl.safechain-agent.plist"
+    plist_path = "#{ENV['HOME']}/Library/LaunchAgents/com.aikidosecurity.sc-agent.plist"
     system "mkdir", "-p", File.dirname(plist_path)
     
     File.write(plist_path, plist_content)
@@ -53,26 +53,26 @@ class ScAgent < Formula
       <plist version="1.0">
       <dict>
         <key>Label</key>
-        <string>homebrew.mxcl.safechain-agent</string>
+        <string>com.aikidosecurity.sc-agent</string>
         <key>ProgramArguments</key>
         <array>
-          <string>#{bin}/safechain-agent</string>
+          <string>#{bin}/sc-agent</string>
         </array>
         <key>RunAtLoad</key>
         <true/>
         <key>KeepAlive</key>
         <true/>
         <key>StandardOutPath</key>
-        <string>#{var}/log/safechain-agent.log</string>
+        <string>#{var}/log/sc-agent.log</string>
         <key>StandardErrorPath</key>
-        <string>#{var}/log/safechain-agent.error.log</string>
+        <string>#{var}/log/sc-agent.error.log</string>
       </dict>
       </plist>
     PLIST
   end
 
   test do
-    system "#{bin}/safechain-agent", "--version"
+    system "#{bin}/sc-agent", "--version"
   end
 end
 
