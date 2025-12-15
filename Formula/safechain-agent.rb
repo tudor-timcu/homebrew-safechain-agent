@@ -11,11 +11,11 @@ class SafechainAgent < Formula
   on_macos do
     if Hardware::CPU.intel?
       url "https://github.com/AikidoSec/safechain-agent/releases/download/v#{version}/safechain-agent-darwin-amd64"
-      sha256 "7bec3079e468fa75ad34b0155725d2598d4961ab8fe9e6667f3798401f30f034"
+      sha256 "9c423281ab2541c8e3ff52c58f4699096fa01b89b3396b49a10b0a5fa6fcaf9c"
     end
     if Hardware::CPU.arm?
       url "https://github.com/AikidoSec/safechain-agent/releases/download/v#{version}/safechain-agent-darwin-arm64"
-      sha256 "dc31095258a3d07d18356b2348647cd836774750676adae3a95ece9ace6995e8"
+      sha256 "5eb6331dba58a7347934bb07d61b1d118f24a64b29a9d107ddf47dcb70b80425"
     end
   end
 
