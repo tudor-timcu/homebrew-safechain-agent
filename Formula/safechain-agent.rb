@@ -4,13 +4,13 @@
 class SafechainAgent < Formula
   desc "Aikido SafeChain Agent"
   homepage "https://github.com/AikidoSec/safechain-agent"
-  version "0.1.0"
+  version "0.2.0"
   license "AGPL"
 
   on_macos do
     if Hardware::CPU.intel?
       url "https://github.com/AikidoSec/safechain-internals/releases/download/v#{version}/safechain-agent-darwin-amd64"
-      sha256 "6084dd46c99af985b71634076b18f23e6248e0455a314c1eb95015dfad0993ca"
+      sha256 "e2fb9917b1fa0b23750c4386155b417302bd3d93b76de9de0817dd6701a3c7d9"
 
       resource "safechain-proxy" do
         url "https://github.com/AikidoSec/safechain-internals/releases/download/v#{SafechainAgent.version}/safechain-proxy-darwin-amd64"
@@ -19,7 +19,7 @@ class SafechainAgent < Formula
     end
     if Hardware::CPU.arm?
       url "https://github.com/AikidoSec/safechain-internals/releases/download/v#{version}/safechain-agent-darwin-arm64"
-      sha256 "9e1780773c2dfc74976aff655f36095b674169cc11851a830be22a7dc7ad6d75"
+      sha256 "dc32a5ff5f57df3bd1310499cf657ef9bc4ed4f42a8bce84386ad28b4c9b46f7"
 
       resource "safechain-proxy" do
         url "https://github.com/AikidoSec/safechain-internals/releases/download/v#{SafechainAgent.version}/safechain-proxy-darwin-arm64"
